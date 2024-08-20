@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="lk section-top section-bottom">
+				<div class="lk__container">
+					<div class="content-block">
+						<div class="content-block__left">
+							<div class="content-block__line"></div>
+						</div>
+						<div class="content-block__info">
+							<h2 class="content-block__title title">Поддержка</h2>
+							<div class="personal-info">
+								<p style="font-size:1.7em;text-align:center;margin:1em 0">Оставьте жалобу или пожелание</p>
+								<form class="form" method="post">
+									{% csrf_token %}
+									<div style="margin:1em 0">
+										<p>Выберите тему</p>
+										{{ form.topic }}
+									</div>
+									<p style="margin:2em 0 0 0">Опишите ситуацию</p>
+								<div class="form__input _textarea">
+
+									{{ form.text }}
+								</div>
+								<div class="form__row">
+									<button class="form__button button" type="submit">Отправить</button>
+								</div>
+
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}

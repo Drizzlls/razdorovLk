@@ -1,0 +1,8 @@
+{% load static %}
+<meta charset="UTF-8">
+<title itemprop="headline">{% if title %} {{ title }} {% elif namePage %} {{namePage}} {% else %} Банкротство физических лиц {% endif %}</title>
+{% if description %}<meta name="description" content="{{ description }}" itemprop="description">{% else %}<meta name="description" content="Банкротство физических лиц" itemprop="description">{% endif %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if namePage %}<input type="hidden" id="namePage" value="{{ namePage }}">{% elif title %}<input type="hidden" id="namePage" value="{{ title }}">{% else %}<input type="hidden" id="namePage" value="None">{% endif %}

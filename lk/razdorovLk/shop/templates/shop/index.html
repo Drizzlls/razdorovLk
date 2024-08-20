@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+	.task-lk table tr:nth-child(odd) td {
+  background-color: var(--light-gray)
+}
+</style>
+<section class="lk section-top section-bottom">
+				<div class="lk__container">
+					<div class="content-block">
+
+						<div class="content-block__info">
+							<div style="display:flex;justify-content:space-between">
+								<h2 class="content-block__title title">Магазин</h2>
+								<div style="display:flex;flex-direction:column;align-items:center">
+									<p>Количество доступных бонусов:</p>
+									<span class="" style="font-size:1.5em;margin:0.5em 0 0 0;color:#841811"><b>{{ user.coins }}</b></span>
+									<a href="{% url 'history' %}" style="margin:0.5em 0 0 0;color:#841811;border-bottom:solid"><b>Посмотреть историю</b></a>
+								</div>
+							</div>
+
+							<div class="task-lk">
+								<div class="task-lk__table">
+									<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation" width="100%">
+										<thead>
+											<tr>
+												<th>
+													Услуга/товар
+												</th>
+												<th>
+													Краткое описание
+												</th>
+												<th>
+													Цена
+												</th>
+												<th>
+
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for item in items %}
+											<tr>
+												<td>{{ item.title }}</td>
+												<td>{{ item.description }}</td>
+												<td><strong>{{ item.price }}</strong></td>
+												<td>
+													<div class="lk-navigation__action">
+														{% if item.price > user.coins %}
+														<button class="button button_outline disabled" disabled>Недостаточно бонусов</button>
+														<a href="{% url 'tasks' %}" style="margin:0.3em 0 0 0;color:#841811"><b>Заработать</b></a>
+														{% else %}
+														<form action="{% url 'handler' %}" method="post">
+															{% csrf_token %}
+															<input type="text" value="{{ item.pk }}" name="item" hidden>
+															<button class="button button_outline" type="submit">Купить</button>
+														</form>
+														{% endif %}
+
+													</div>
+												</td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}

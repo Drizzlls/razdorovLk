@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="login section-top section-bottom">
+				<h1 class="display-4 mt-5">Ваша ссылка некорректна</h1>
+					<div class="col">
+										<a href="{% url 'login' %}" class="btn btn-primary px-5">Вернуться на главную</a>
+									</div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="lk section-top section-bottom">
+				<div class="lk__container">
+					<div class="content-block">
+						<div class="content-block__info">
+							<h2 class="content-block__title title">Список задач</h2>
+							<div class="task-lk">
+								<div class="task-lk__table">
+									<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation" width="100%">
+										<thead>
+											<tr>
+												<th>Задание</th>
+												<th>
+													<span>Краткое описание</span>
+													<span>Описание</span>
+												</th>
+												<th>Баллы</th>
+												<th>Файлы</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for task in tasks %}
+											<tr>
+												<td>{{ task.title }}</td>
+												<td>{{ task.description }}</td>
+												<td>{{ task.coins }}</td>
+												<td></td>
+											</tr>
+										{% endfor %}
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}

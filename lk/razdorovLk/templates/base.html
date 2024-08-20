@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head itemscope itemtype="http://schema.org/WPHeader">{% block head %} {% include 'inc/_head.html' %} {% endblock %}</head>
+<body>
+	<div class="wrapper">
+		{% block header %}
+			{% include 'inc/_header.html' %}
+		{% endblock %}
+		{% block content %}
+		{% endblock %}
+		{% block footer %}
+			{% include 'inc/_footer.html' %}
+		{% endblock %}
+	</div>
+	{% block scripts %}
+	{% include 'inc/_scripts.html' %}
+	{% endblock %}
+</body>
+
+</html>

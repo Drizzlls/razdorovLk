@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="lk section-top section-bottom">
+				<div class="lk__container">
+					<div class="content-block">
+
+						<div class="content-block__info">
+							<div style="display:flex;justify-content:space-between">
+								<h2 class="content-block__title title">История</h2>
+								<div style="display:flex;flex-direction:column;align-items:center">
+									<p>Количество доступных бонусов:</p>
+									<span class="" style="font-size:1.5em;margin:0.5em 0 0 0;color:#841811"><b>{{ user.coins }}</b></span>
+								</div>
+							</div>
+
+							<div class="task-lk">
+								<div class="task-lk__table">
+									<table align="center" border="0" cellspacing="0" cellpadding="0" role="presentation" width="100%">
+										<thead>
+											<tr>
+												<th>
+													Название операции
+												</th>
+												<th>
+													Количество токенов
+												</th>
+												<th>
+													Дата
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+										{% for item in itemsHistory %}
+										{% if item.method == 'plus' %}
+										<tr class="tr_table_plus">
+										{% else %}
+										<tr class="tr_table_minus">
+										{% endif %}
+												<td>{{ item.item.title }}</td>
+												<td>{{ item.price }}</td>
+												<td><strong>{{ item.date }}</strong></td>
+											</tr>
+										{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}

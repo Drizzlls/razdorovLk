@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load affairsCastomTags %}
+{% load static %}
+{% block content %}
+<section class="lk section-top section-bottom">
+				<div class="lk__container">
+					<div class="content-block">
+						<div class="content-block__left">
+							<div class="content-block__line"></div>
+						</div>
+						<div class="content-block__info">
+							<h2 class="content-block__title title">Состояние дела</h2>
+							<div class="lk-content">
+								<div class="lk-content__item">
+									<div class="notifications">
+										<div class="notifications-item">
+											<div class="lk-content-title">
+												Стадия
+											</div>
+											<div class="notifications-item__details details">
+												<div class="details__item">
+													<div class="details__label">
+														Стадия:
+													</div>
+													<div class="details__value _red">
+														{{ user.affair.stage }}
+													</div>
+												</div>
+												<div class="details__item">
+													<div class="details__label">
+														Описание:
+													</div>
+													<div class="details__value">
+														{{ user.affair.stage.description }}
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="notifications-item">
+											<div class="lk-content-title">
+												Даты
+											</div>
+											<div class="notifications-item__details details">
+												<div class="details__item">
+													<div class="details__label">
+														Дата заключения сделки:
+													</div>
+													<div class="details__value">
+														{{ user.affair.dateOfConclusion|date:'d-m-Y'|checkingForEmptiness }}
+													</div>
+												</div>
+												<div class="details__item">
+													<div class="details__label">
+														Дата оплаты депозита:
+													</div>
+													<div class="details__value">
+														{{ user.affair.depositPaymentDate|date:'d-m-Y'|checkingForEmptiness }}
+													</div>
+												</div>
+												<div class="details__item">
+													<div class="details__label">
+														Дата отправки в суд:
+													</div>
+													<div class="details__value">
+														{{ user.affair.dateOfSendingToCourt|date:'d-m-Y'|checkingForEmptiness }}
+													</div>
+												</div>
+												<div class="details__item">
+													<div class="details__label">
+														Дата признания банкротом:
+													</div>
+													<div class="details__value">
+														{{ user.affair.dateOfBankruptcy|date:'d-m-Y'|checkingForEmptiness }}
+													</div>
+												</div>
+												<div class="details__item">
+													<div class="details__label">
+														Дата завершения:
+													</div>
+													<div class="details__value">
+														{{ user.affair.completionDate|date:'d-m-Y'|checkingForEmptiness }}
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="notifications-item">
+											<div class="lk-content-title">
+												Дело
+											</div>
+											<div class="notifications-item__details details">
+												<div class="details__item">
+													<div class="details__label">
+														Номер дела:
+													</div>
+													<div class="details__value">
+														{{ user.caseNumber|checkingForEmptiness }}
+													</div>
+												</div>
+												<div class="details__item">
+													<div class="details__label">
+														Ссылка на Кад.Арбитр:
+													</div>
+													<div class="details__value">
+														{% if user.affair.linkToKadArbitr is None %}
+														<p>{{ user.affair.linkToKadArbitr|checkingForEmptiness }}</p>
+														{% else %}
+														<a href="{{user.affair.linkToKadArbitr}}">{{ user.affair.linkToKadArbitr|checkingForEmptiness }}</a>
+														{% endif %}
+
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<div class="notifications-item">
+											<div class="lk-content-title">
+												Поддержка
+											</div>
+											<div class="details__label">
+												<div class="contacts"  style="margin:2em 0 0 0">
+													<b>Персональный менеджер</b>
+													<div class="notifications-item__details details">
+												<div class="details__item"   style="margin:1em 0 0 0">
+													<p>Имя</p>
+													<div class="details__value">
+														{{ user.affair.manager.name }}
+														{{ user.affair.manager.secondName }}
+													</div>
+												</div>
+												<div class="details__item">
+													<p>Номер телефона</p>
+													<div class="details__value">
+														<a href="tel:{{ user.affair.manager.phone }}">{{ user.affair.manager.phone }}</a>
+													</div>
+												</div>
+											</div>
+												</div>
+												<div class="contacts" style="margin:2em 0 0 0">
+													<b>Сотрудник поддержки</b>
+													<div class="notifications-item__details details">
+												<div class="details__item"   style="margin:1em 0 0 0">
+													<p>Имя</p>
+													<div class="details__value">
+														{{ user.affair.support.name }}
+														{{ user.affair.support.secondName }}
+													</div>
+												</div>
+												<div class="details__item">
+													<p>Номер телефона</p>
+													<div class="details__value">
+														<a href="tel:{{ user.affair.support.phone }}">{{ user.affair.support.phone }}</a>
+													</div>
+												</div>
+											</div>
+												</div>
+												<div class="contacts" style="margin:2em 0 0 0">
+													<b>Руководитель отдела</b>
+													<div class="notifications-item__details details">
+												<div class="details__item"   style="margin:1em 0 0 0">
+													<p>Имя</p>
+													<div class="details__value">
+														{{ user.affair.boss.name }}
+														{{ user.affair.boss.secondName }}
+													</div>
+												</div>
+												<div class="details__item">
+													<p>Номер телефона</p>
+													<div class="details__value">
+														<a href="tel:{{ user.affair.boss.phone }}">{{ user.affair.boss.phone }}</a>
+													</div>
+												</div>
+											</div>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}

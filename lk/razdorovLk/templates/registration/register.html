@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="login section-top section-bottom">
+				<div class="login__container">
+					<div class="content-block">
+						<div class="content-block__left">
+							<div class="content-block__line"></div>
+						</div>
+						<div class="content-block__info">
+							<h2 class="content-block__title title">Регистрация</h2>
+																{% if form.non_field_errors %}
+  <div class="non-field-errors">
+    {% for err in form.non_field_errors %}
+      <p class="form-error">{{ err }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+									{{ form.errors }}
+							<form class="form" method="post">
+								{% csrf_token %}
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="name">Имя<span>*</span></label>
+										<div class="form__input">
+											{{form.first_name}}
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="name">Фамилия<span>*</span></label>
+										<div class="form__input">
+											{{form.last_name}}
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="name">Отчество<span>*</span></label>
+										<div class="form__input">
+											{{form.surname}}
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="email">E-mail<span>*</span></label>
+										<div class="form__input">
+											{{form.email}}
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="tel">Номер телефона<span>*</span></label>
+										<div class="form__input">
+											{{form.phone}}
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="pass">Пароль<span>*</span></label>
+										<div class="form__input _password">
+											{{form.password1}}
+<!--											<input class="input" autocomplete="off" id="pass" type="password" placeholder="********">-->
+											<button class="pass-show input__viewpass" type="button">
+												<img src="{% static 'img/icons/eye.svg' %}" alt="Image">
+											</button>
+										</div>
+										<div class="form__info">
+											Пароль должен содержать не менее 8 символов
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__column">
+										<label class="form__label" for="pass-repeat">Подтвердить пароль<span>*</span></label>
+										<div class="form__input _password">
+											{{form.password2}}
+<!--											<input class="input" autocomplete="off" id="pass-repeat" type="password" placeholder="********">-->
+											<button class="pass-show input__viewpass" type="button">
+												<img src="{% static 'img/icons/eye.svg' %}" alt="Image">
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="form__row">
+									<div class="form__text">
+										Нажимая на кнопку “Зарегистрироваться” я даю согласие на&nbsp;обработку <a href="">персональных
+											данных</a>
+									</div>
+									<button class="form__button button" type="submit">Зарегистрироваться</button>
+								</div>
+								<br>
+								<div class="login__action" style="margin:2em 0 0 0">
+									<div class="login__text">
+										<p>Уже есть учетная запись?</p>
+									</div>
+									<a href="{% url 'login' %}" class="login__btn button button_outline">Войти</a>
+							</div>
+							</form>
+
+						</div>
+
+					</div>
+				</div>
+			</section>
+{% endblock %}

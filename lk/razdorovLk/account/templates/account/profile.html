@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="lk section-top section-bottom">
+				<div class="lk__container">
+					<div class="content-block">
+						<div class="content-block__left">
+							<div class="content-block__line"></div>
+							<div class="lk-icon" data-da=".lk .content-block__info, 767.98,1">
+								<div class="lk-icon__img">
+									<div id="formPreview">
+										<img src="{% static 'img/user.jpg' %}" alt="Image">
+									</div>
+									<div class="file">
+										<div class="lk-icon__beige file__item">
+											<input id="formImage" accept=".jpg, .png, .gif" type="file" name="image" class="file__input">
+											<div class="file__button">
+												<img src="{% static 'img/icons/camera.svg' %}" alt="Image">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="lk-icon__title title title_h3">{{ user.first_name }}</div>
+							</div>
+						</div>
+						<div class="content-block__info">
+							<h2 class="content-block__title title">Личный кабинет</h2>
+							<div class="personal-info">
+								<form action="#" class="personal-info__form form">
+									<div class="form__row">
+										<div class="form__column">
+											<label class="form__label" for="e-name">ФИО</label>
+											<div class="form__input input-box">
+												<input class="input-box__input input" autocomplete="off" id="e-name" type="text" placeholder="" value="{{user.last_name}} {{user.first_name}} {{user.surname}} ">
+												<a href="" class="input-box__btn button button_gray">Изменить</a>
+											</div>
+										</div>
+										<div class="form__column">
+											<label class="form__label" for="e-tel">Телефон</label>
+											<div class="form__input input-box">
+												<input class="input-box__input input" autocomplete="off" id="e-tel" type="text" placeholder="" value="{{user.phone}}">
+												<a href="" class="input-box__btn button button_gray">Изменить</a>
+											</div>
+										</div>
+									</div>
+									<div class="form__row">
+										<div class="form__column">
+											<div class="form__label">Баллы</div>
+											<div class="form__input input-box">
+												<input class="input-box__input input" readonly="" autocomplete="off" type="text" placeholder="" value="{{ user.coins }}">
+												<a href="" class="input-box__btn button button_gray">Вывести</a>
+											</div>
+										</div>
+										<div class="form__column">
+											<label class="form__label" for="e-mail">E-mail</label>
+											<div class="form__input input-box">
+												<input class="input-box__input input" autocomplete="off" id="e-mail" type="text" placeholder="" value="{{user.email}}">
+												<a href="" class="input-box__btn button button_gray">Изменить</a>
+											</div>
+										</div>
+									</div>
+									<div class="form__row">
+										<div class="form__column">
+											<label class="form__label" for="e-about">Информация о себе</label>
+											<div class="form__input _textarea">
+												<textarea autocomplete="off" name="form[]" id="e-about" placeholder="" data-error="Ошибка" class="input"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="form__row">
+										<button class="personal-info__btn button button_gray" type="submit">Сохранить</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+{% endblock %}
